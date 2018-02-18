@@ -7,7 +7,10 @@
     "start": "node ./webpack/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src",
-    "precommit": "precise-commits"
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": ["prettier --write", "git add"]
   },
   "author": "Boyd Dames",
   "license": "MIT",
@@ -52,7 +55,6 @@
     "lint-staged": "^6.1.1",
     "node-sass": "4.5.0",
     "postcss-loader": "1.3.0",
-    "precise-commits": "^1.0.2",
     "prettier": "1.10.2",
     "redux-devtools": "3.3.2",
     "redux-devtools-dock-monitor": "1.1.1",
