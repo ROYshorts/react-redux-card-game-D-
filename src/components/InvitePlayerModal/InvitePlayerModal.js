@@ -8,16 +8,16 @@ class InvitePlayerModal extends Component {
 
     inviteLinkInput.focus();
     inviteLinkInput.setSelectionRange(0, inviteLinkInput.value.length);
-  }
+  };
 
   copy = () => {
     document.execCommand('copy');
-  }
+  };
 
   selectAndCopy = () => {
     this.select();
     this.copy();
-  }
+  };
 
   render() {
     const { inviteLink, isOpen, onClose } = this.props;
@@ -35,14 +35,16 @@ class InvitePlayerModal extends Component {
         <FormInputGroup>
           <FormInput
             type="text"
-            inputRef={(input) => { this.inviteLinkInput = input; }}
+            inputRef={input => {
+              this.inviteLinkInput = input;
+            }}
             value={inviteLink}
             onClick={this.select}
-            full isGrouped readOnly
+            full
+            isGrouped
+            readOnly
           />
-          <button onClick={this.selectAndCopy}>
-            Copy
-          </button>
+          <button onClick={this.selectAndCopy}>Copy</button>
         </FormInputGroup>
       </Modal>
     );

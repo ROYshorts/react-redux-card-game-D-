@@ -15,7 +15,7 @@ const Hand = ({ yourTurn, spendableMana, cards }) => {
   const cardList = cards.map((card, index) => {
     const cardClasses = classNames(cardStyles.CardYours, {
       [cardStyles[`CardTotal-${cardsLength}`]]: cardsLength,
-      [cardStyles[`CardNumber-${index + 1}-of-${cardsLength}`]]: (typeof index !== 'undefined'),
+      [cardStyles[`CardNumber-${index + 1}-of-${cardsLength}`]]: typeof index !== 'undefined',
     });
     const canDrag = yourTurn && hasEnoughMana(card, spendableMana);
 
@@ -30,11 +30,7 @@ const Hand = ({ yourTurn, spendableMana, cards }) => {
     );
   });
 
-  return (
-    <div className={styles.Hand}>
-      { cardList }
-    </div>
-  );
+  return <div className={styles.Hand}>{cardList}</div>;
 };
 
 Hand.propTypes = {

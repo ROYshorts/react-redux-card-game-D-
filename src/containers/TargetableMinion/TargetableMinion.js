@@ -10,7 +10,7 @@ export class TargetableMinion extends Component {
     index: PropTypes.number.isRequired,
     card: PropTypes.instanceOf(CardModel).isRequired,
     attackMinion: PropTypes.func.isRequired,
-  }
+  };
 
   render() {
     const { connectDropTarget, card } = this.props;

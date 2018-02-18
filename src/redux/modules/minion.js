@@ -29,7 +29,7 @@ export function killMinion({ target, minionId }) {
 }
 
 export function attackMinion({ target, targetMinion, source, sourceMinion }) {
-  return (dispatch) => {
+  return dispatch => {
     dispatch({ target, targetMinion, source, sourceMinion, type: ATTACK_MINION });
     dispatch(exhaustMinion({ source, minionId: sourceMinion.id }));
     dispatch(hitMinion({ minionId: targetMinion.id, damage: sourceMinion.attack }));
@@ -46,7 +46,7 @@ export function attackMinion({ target, targetMinion, source, sourceMinion }) {
 }
 
 export function hitFace({ source, sourceMinionId, target, damage }) {
-  return (dispatch) => {
+  return dispatch => {
     dispatch(exhaustMinion({ source, minionId: sourceMinionId }));
     dispatch({ target, damage, type: HIT_FACE });
   };

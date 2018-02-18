@@ -22,7 +22,7 @@ const Player = ({ name, character, hand, board, exhaustedMinionIds, yourTurn, ac
         />
       </BoardSide>
       <h1 className={styles.PlayerName}>
-        { name || 'Unnamed' } - Mana: { mana.spendableMana }/{ mana.max } and Health: { health }
+        {name || 'Unnamed'} - Mana: {mana.spendableMana}/{mana.max} and Health: {health}
         <TargetableHero ownedBy="PLAYER" health={health} hitFace={actions.hitFace} />
       </h1>
       <div className={styles.PlayerHandWrapper}>

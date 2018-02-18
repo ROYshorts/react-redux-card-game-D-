@@ -14,7 +14,7 @@ const Modal = ({ children, size = '90%', ...rest }) => (
     }}
     {...rest}
   >
-    { children }
+    {children}
   </ReactModal>
 );
 

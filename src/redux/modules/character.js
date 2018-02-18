@@ -32,7 +32,7 @@ export function fillMaxMana({ target, fromServer }) {
 }
 
 export function addAndFillMana({ target, fromServer }) {
-  return (dispatch) => {
+  return dispatch => {
     dispatch(addMaxMana({ target, fromServer }));
     dispatch(fillMaxMana({ target, fromServer }));
   };

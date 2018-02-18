@@ -7,7 +7,7 @@ export class TargetableHero extends Component {
     connectDropTarget: PropTypes.func.isRequired,
     ownedBy: PropTypes.oneOf(['PLAYER', 'OPPONENT']).isRequired,
     health: PropTypes.number.isRequired,
-  }
+  };
 
   render() {
     const { connectDropTarget, health } = this.props;

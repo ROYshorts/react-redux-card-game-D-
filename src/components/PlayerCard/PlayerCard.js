@@ -1,17 +1,12 @@
 import React, { PropTypes } from 'react';
 import styles from './PlayerCard.scss';
 
-const PlayerCard = ({
-  playerName,
-  ready = false,
-  button = null,
-  showReady = true,
-}) => (
+const PlayerCard = ({ playerName, ready = false, button = null, showReady = true }) => (
   <section className={styles.PlayerCard}>
     <div className={styles.PlayerCardAvatar} />
-    <h1 className={styles.PlayerCardName}>{ playerName }</h1>
-    <div>{ showReady && (ready ? 'Ready' : 'Not ready') }</div>
-    { button && button }
+    <h1 className={styles.PlayerCardName}>{playerName}</h1>
+    <div>{showReady && (ready ? 'Ready' : 'Not ready')}</div>
+    {button && button}
   </section>
 );
 

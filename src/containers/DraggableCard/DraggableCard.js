@@ -17,7 +17,7 @@ export class DraggableCard extends Component {
     hoverable: PropTypes.bool,
     isDragging: PropTypes.bool.isRequired,
     canDrag: PropTypes.bool.isRequired,
-  }
+  };
 
   componentDidMount() {
     const { connectDragPreview } = this.props;

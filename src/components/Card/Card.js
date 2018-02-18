@@ -13,14 +13,11 @@ const Card = ({ card, className, isDragging }) => {
 
   return (
     <div className={cardClass}>
-      <div
-        className={styles.CardPortrait}
-        style={{ backgroundImage: `url(${portrait})` }}
-      />
-      <div className={styles.CardMana}>{ mana || 0 }</div>
-      <h1 className={styles.CardName}>{ name }</h1>
-      { attack ? <div className={styles.CardAttack}>{ attack }</div> : null }
-      { defense ? <div className={styles.CardDefense}>{ defense }</div> : null }
+      <div className={styles.CardPortrait} style={{ backgroundImage: `url(${portrait})` }} />
+      <div className={styles.CardMana}>{mana || 0}</div>
+      <h1 className={styles.CardName}>{name}</h1>
+      {attack ? <div className={styles.CardAttack}>{attack}</div> : null}
+      {defense ? <div className={styles.CardDefense}>{defense}</div> : null}
     </div>
   );
 };

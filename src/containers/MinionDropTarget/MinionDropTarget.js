@@ -16,7 +16,7 @@ export class MinionDropTarget extends Component {
     card: PropTypes.instanceOf(CardModel).isRequired,
     exhausted: PropTypes.bool.isRequired,
     playCard: PropTypes.func.isRequired,
-  }
+  };
 
   render() {
     const { yourTurn, connectDropTarget, card, exhausted } = this.props;

@@ -8,12 +8,12 @@ import formStyles from 'styles/base/forms.scss';
 //
 // eslint-disable-next-line react/prefer-stateless-function
 class FormInput extends Component {
-  handleRef = refHandler => (node) => {
+  handleRef = refHandler => node => {
     if (refHandler) {
       this.node = node;
       refHandler(node);
     }
-  }
+  };
 
   render() {
     const { base, isGrouped, full, inputRef, ...rest } = this.props;
@@ -23,13 +23,7 @@ class FormInput extends Component {
       [formStyles['input--full']]: full,
     });
 
-    return (
-      <input
-        {...rest}
-        ref={this.handleRef(inputRef)}
-        className={inputStyles}
-      />
-    );
+    return <input {...rest} ref={this.handleRef(inputRef)} className={inputStyles} />;
   }
 }
 

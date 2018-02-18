@@ -47,18 +47,18 @@ export class GameLobbyScreen extends Component {
       emit: PropTypes.func.isRequired,
       on: PropTypes.func.isRequired,
     }).isRequired,
-  }
+  };
 
   state = {
     canCountdown: true,
-  }
+  };
 
   componentDidMount = () => {
     this.joinGame(this.props);
     this.notifyOnPlayerJoined(this.props);
-  }
+  };
 
-  componentWillReceiveProps = (nextProps) => {
+  componentWillReceiveProps = nextProps => {
     if (nextProps.gameId !== this.props.gameId) {
       this.joinGame(nextProps);
     }
@@ -68,7 +68,7 @@ export class GameLobbyScreen extends Component {
     } else {
       this.stopCountdown();
     }
-  }
+  };
 
   componentWillUnmount = () => {
     if (!this.props.started) {
@@ -76,7 +76,7 @@ export class GameLobbyScreen extends Component {
     }
 
     this.removeOnPlayerJoinedListener(this.props);
-  }
+  };
 
   startCountdown = () => this.setState(() => ({ canCountdown: true }));
   stopCountdown = () => this.setState(() => ({ canCountdown: false }));
@@ -84,9 +84,9 @@ export class GameLobbyScreen extends Component {
   handleCountdownFinish = () => {
     this.startGame(this.props);
     this.goInGame(this.props);
-  }
+  };
 
-  notifyOnPlayerJoined = (props) => {
+  notifyOnPlayerJoined = props => {
     props.socket.on('playerJoined', ({ socketId, name, playerCount }) => {
       if (this.props.socket.id !== socketId) {
         props.actions.setOpponentName(name);
@@ -96,48 +96,48 @@ export class GameLobbyScreen extends Component {
         props.actions.updateHasOpponent(true);
       }
     });
-  }
+  };
 
-  removeOnPlayerJoinedListener = (props) => {
+  removeOnPlayerJoinedListener = props => {
     props.socket.removeAllListeners('playerJoined');
-  }
+  };
 
   emitReadyChange = (props, readyState) => {
     const { socket, gameId } = props;
 
     socket.emit('readyChange', { gameId, readyState });
-  }
+  };
 
-  startGame = (props) => {
+  startGame = props => {
     const { socket, gameId, actions } = props;
 
     socket.emit('gameStart', { gameId });
     actions.startGame();
-  }
+  };
 
-  joinGame = (props) => {
+  joinGame = props => {
     const { socket, gameId, player: { name } } = props;
 
     socket.emit('gameJoin', { gameId, name });
-  }
+  };
 
-  leaveGame = (props) => {
+  leaveGame = props => {
     const { socket, gameId, actions } = props;
 
     socket.emit('gameLeave', { gameId });
     actions.resetCurrentGame();
-  }
+  };
 
-  goInGame = (props) => {
+  goInGame = props => {
     const { router, gameId } = props;
 
     router.push(`/game/${gameId}`);
-  }
+  };
 
   toggleReadyForPlayer = () => {
     this.props.actions.toggleReady({ target: 'PLAYER' });
     this.emitReadyChange(this.props, !this.props.player.ready);
-  }
+  };
 
   render() {
     const { canCountdown } = this.state;
@@ -172,22 +172,26 @@ const mapStateToProps = ({ player, opponent, currentGame, lobby }) => {
   };
 };
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({
-    setReady,
-    toggleReady,
-    startGame,
-    updateHasOpponent,
-    setOpponentName,
-    resetCurrentGame,
-  }, dispatch),
-  playerCardActions: bindActionCreators({
-    openFriendInviteModal,
-    closeFriendInviteModal,
-  }, dispatch),
+  actions: bindActionCreators(
+    {
+      setReady,
+      toggleReady,
+      startGame,
+      updateHasOpponent,
+      setOpponentName,
+      resetCurrentGame,
+    },
+    dispatch
+  ),
+  playerCardActions: bindActionCreators(
+    {
+      openFriendInviteModal,
+      closeFriendInviteModal,
+    },
+    dispatch
+  ),
 });
 
-export default compose(
-  withSocket,
-  withRouter,
-  connect(mapStateToProps, mapDispatchToProps)
-)(GameLobbyScreen);
+export default compose(withSocket, withRouter, connect(mapStateToProps, mapDispatchToProps))(
+  GameLobbyScreen
+);

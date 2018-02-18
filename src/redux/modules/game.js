@@ -14,13 +14,15 @@ function newGameAction({ yourName, opponentName, isPlayerStarting, fromServer })
 }
 
 export function newGame({ yourName, opponentName, isPlayerStarting, fromServer }) {
-  return (dispatch) => {
+  return dispatch => {
     dispatch(newGameAction({ yourName, opponentName, isPlayerStarting, fromServer }));
     dispatch(addAndFillMana({ fromServer, target: isPlayerStarting ? 'PLAYER' : 'OPPONENT' }));
-    dispatch(drawCard({
-      fromServer,
-      name: 'The Coin',
-      target: isPlayerStarting ? 'OPPONENT' : 'PLAYER',
-    }));
+    dispatch(
+      drawCard({
+        fromServer,
+        name: 'The Coin',
+        target: isPlayerStarting ? 'OPPONENT' : 'PLAYER',
+      })
+    );
   };
 }

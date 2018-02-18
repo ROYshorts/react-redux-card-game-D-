@@ -15,7 +15,7 @@ export class GameScreen extends Component {
       gameId: PropTypes.string.isRequired,
       hasOpponent: PropTypes.bool.isRequired,
     }).isRequired,
-  }
+  };
 
   render() {
     return <Board />;
@@ -26,7 +26,4 @@ function mapStateToProps({ currentGame }) {
   return { currentGame };
 }
 
-export default compose(
-  connect(mapStateToProps),
-  withRouter,
-)(GameScreen);
+export default compose(connect(mapStateToProps), withRouter)(GameScreen);

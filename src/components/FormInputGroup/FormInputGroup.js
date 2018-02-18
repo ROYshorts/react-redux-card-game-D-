@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import formStyles from 'styles/base/forms.scss';
 
-const FormGroup = (props) => {
+const FormGroup = props => {
   const inputGroupStyles = classNames(
     formStyles.input,
     formStyles['input--group'],
@@ -14,10 +14,7 @@ const FormGroup = (props) => {
 };
 
 FormGroup.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
 };
 
 export default FormGroup;

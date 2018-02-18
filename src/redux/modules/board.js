@@ -36,18 +36,16 @@ const initialState = new Record({
 export default function boardReducer(state = initialState(), action) {
   switch (action.type) {
     case PLAY_CARD:
-      return state.update('minionIds', minionIdsState => (
-        minionIds(minionIdsState, action)
-      )).update('exhaustedMinionIds', exhaustedState => (
-        exhaustedMinionIds(exhaustedState, action)
-      ));
+      return state
+        .update('minionIds', minionIdsState => minionIds(minionIdsState, action))
+        .update('exhaustedMinionIds', exhaustedState => exhaustedMinionIds(exhaustedState, action));
     case KILL_MINION:
       return state.update('minionIds', minionIdsState => minionIds(minionIdsState, action));
     case EXHAUST_MINION:
     case END_TURN:
-      return state.update('exhaustedMinionIds', exhaustedState => (
+      return state.update('exhaustedMinionIds', exhaustedState =>
         exhaustedMinionIds(exhaustedState, action)
-      ));
+      );
     default:
       return state;
   }
@@ -55,6 +53,6 @@ export default function boardReducer(state = initialState(), action) {
 
 const getBoard = (state, props) => state[props].board.minionIds;
 const getMinions = state => state.entities.minions;
-export const boardSelector = createSelector([getBoard, getMinions], (minionIdsState, minions) => (
+export const boardSelector = createSelector([getBoard, getMinions], (minionIdsState, minions) =>
   minionIdsState.map(minionId => minions.get(minionId))
-));
+);

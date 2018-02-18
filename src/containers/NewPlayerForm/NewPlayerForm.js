@@ -12,21 +12,21 @@ export default class NewPlayerForm extends Component {
     onSubmit: PropTypes.func.isRequired,
   };
 
-  state = { nameInput: '' }
+  state = { nameInput: '' };
 
-  onChangeHandler = (event) => {
+  onChangeHandler = event => {
     this.setState({ nameInput: event.target.value });
-  }
+  };
 
-  onSubmitHandler = (event) => {
+  onSubmitHandler = event => {
     event.preventDefault();
     this.props.onSubmit(capitalizeFirstLetter(this.state.nameInput));
     this.clearForm();
-  }
+  };
 
   clearForm = () => {
     this.setState({ nameInput: '' });
-  }
+  };
 
   render() {
     return (

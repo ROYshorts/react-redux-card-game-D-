@@ -10,11 +10,7 @@ const OpponentHand = ({ handCount }) => {
     <CardBack key={index} margin={margin} className={cardStyles.CardOpponent} />
   ));
 
-  return (
-    <div className={styles.Hand}>
-      { cardList }
-    </div>
-  );
+  return <div className={styles.Hand}>{cardList}</div>;
 };
 
 OpponentHand.propTypes = {

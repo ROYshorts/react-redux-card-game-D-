@@ -5,7 +5,7 @@ export default class CountdownManager extends Component {
     startTime: PropTypes.number.isRequired,
     onFinish: PropTypes.func.isRequired,
     children: PropTypes.func.isRequired,
-  }
+  };
 
   state = {
     started: false,
@@ -26,7 +26,7 @@ export default class CountdownManager extends Component {
 
     this.setState(() => ({ started: true }));
     this.countdownInterval = setInterval(this.countDown, 1000);
-  }
+  };
 
   countDown = () => {
     this.setState(() => ({ time: this.state.time - 1 }));
@@ -35,7 +35,7 @@ export default class CountdownManager extends Component {
       this.props.onFinish();
       clearInterval(this.countdownInterval);
     }
-  }
+  };
 
   render() {
     return this.props.children({

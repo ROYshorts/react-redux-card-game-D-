@@ -7,23 +7,21 @@ import persistPlayerName from 'redux/middlewares/persistPlayerName';
 import rootReducer from 'redux/modules/rootReducer';
 import { DevTools } from 'containers';
 
-const enhancer = socket => compose(
-  applyMiddleware(thunk, emitToOpponent(socket), persistPlayerName),
-  DevTools.instrument(),
-  persistState(
-    window.location.href.match(
-      /[?&]debug_session=([^&#]+)\b/
-    )
-  )
-);
+const enhancer = socket =>
+  compose(
+    applyMiddleware(thunk, emitToOpponent(socket), persistPlayerName),
+    DevTools.instrument(),
+    persistState(window.location.href.match(/[?&]debug_session=([^&#]+)\b/))
+  );
 
 export default function configureStore(initialState, socket) {
   const store = createStore(rootReducer, initialState, enhancer(socket));
 
   if (module.hot) {
-    module.hot.accept('./modules/rootReducer', () => (
-      store.replaceReducer(require('./modules/rootReducer').default) // eslint-disable-line global-require
-    ));
+    module.hot.accept('./modules/rootReducer', () => {
+      // eslint-disable-next-line global-require
+      store.replaceReducer(require('./modules/rootReducer').default);
+    });
   }
 
   return store;

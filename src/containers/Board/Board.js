@@ -21,7 +21,9 @@ export const Board = ({ yourTurn, player, opponent, actions }) => (
     <PlayerSide>
       <Player {...player} yourTurn={yourTurn} actions={actions} />
     </PlayerSide>
-    <button onClick={actions.endTurn} disabled={!yourTurn}>End turn</button>
+    <button onClick={actions.endTurn} disabled={!yourTurn}>
+      End turn
+    </button>
   </div>
 );
 
@@ -56,16 +58,18 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({
-    playCardWithCost,
-    drawCard,
-    hitFace,
-    attackMinion,
-    endTurn,
-  }, dispatch),
+  actions: bindActionCreators(
+    {
+      playCardWithCost,
+      drawCard,
+      hitFace,
+      attackMinion,
+      endTurn,
+    },
+    dispatch
+  ),
 });
 
-export default compose(
-  dragDropContext(HTML5Backend),
-  connect(mapStateToProps, mapDispatchToProps),
-)(Board);
+export default compose(dragDropContext(HTML5Backend), connect(mapStateToProps, mapDispatchToProps))(
+  Board
+);

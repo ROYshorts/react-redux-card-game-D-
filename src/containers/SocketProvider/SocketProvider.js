@@ -6,11 +6,11 @@ export default class SocketProvider extends Component {
     socket: PropTypes.shape({
       on: PropTypes.func.isRequired,
     }).isRequired,
-  }
+  };
 
   static childContextTypes = {
     socket: PropTypes.object.isRequired,
-  }
+  };
 
   getChildContext() {
     const { socket } = this.props;

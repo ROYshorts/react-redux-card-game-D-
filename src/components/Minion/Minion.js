@@ -11,12 +11,8 @@ const Minion = ({ card: { attack, defense, portrait }, exhausted }) => {
 
   return (
     <div className={minionStyles} style={{ backgroundImage: `url(${portrait})` }}>
-      <div className={classNames(styles.MinionStat, styles.MinionAttack)}>
-        { attack || 0 }
-      </div>
-      <div className={classNames(styles.MinionStat, styles.MinionDefense)}>
-        { defense || 0 }
-      </div>
+      <div className={classNames(styles.MinionStat, styles.MinionAttack)}>{attack || 0}</div>
+      <div className={classNames(styles.MinionStat, styles.MinionDefense)}>{defense || 0}</div>
     </div>
   );
 };

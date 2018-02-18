@@ -15,7 +15,7 @@ export class BoardSideDropTarget extends Component {
     yourTurn: PropTypes.bool.isRequired,
     isBoardFull: PropTypes.bool.isRequired,
     playCard: PropTypes.func.isRequired,
-  }
+  };
 
   render() {
     const {
@@ -42,9 +42,7 @@ export class BoardSideDropTarget extends Component {
 
     return connectDropTarget(
       <div className={sharedStyles.fullSize}>
-        <MinionsOnBoard>
-          { minions }
-        </MinionsOnBoard>
+        <MinionsOnBoard>{minions}</MinionsOnBoard>
       </div>
     );
   }

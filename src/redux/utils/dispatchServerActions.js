@@ -1,7 +1,7 @@
 import { CardModel } from 'redux/modules/card';
 
 export default function dispatchServerActions(store, socket) {
-  socket.on('action', (payload) => {
+  socket.on('action', payload => {
     console.log('action came in through socket!!!', payload);
     const { action } = payload;
 

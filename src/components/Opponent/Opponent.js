@@ -15,16 +15,14 @@ const Opponent = ({ name, character, handCount, board, actions }) => {
   return (
     <div className={styles.Opponent}>
       <h1 className={styles.OpponentName}>
-        { name || 'Unnamed' } - Mana: { mana.spendableMana }/{ mana.max } and Health: { health }
+        {name || 'Unnamed'} - Mana: {mana.spendableMana}/{mana.max} and Health: {health}
         <TargetableHero ownedBy="OPPONENT" health={health} hitFace={actions.hitFace} />
       </h1>
       <div className={styles.OpponentHandWrapper}>
         <OpponentHand handCount={handCount} />
       </div>
       <BoardSide>
-        <MinionsOnBoard>
-          { minions }
-        </MinionsOnBoard>
+        <MinionsOnBoard>{minions}</MinionsOnBoard>
       </BoardSide>
     </div>
   );

@@ -14,7 +14,7 @@ export class DraggableMinion extends Component {
     isDragging: PropTypes.bool.isRequired,
     card: PropTypes.instanceOf(CardModel).isRequired,
     exhausted: PropTypes.bool.isRequired,
-  }
+  };
 
   componentDidMount() {
     const { connectDragPreview } = this.props;

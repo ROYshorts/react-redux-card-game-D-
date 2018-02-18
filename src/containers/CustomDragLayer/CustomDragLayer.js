@@ -40,7 +40,7 @@ class CustomDragLayer extends Component {
       y: PropTypes.number.isRequired,
     }),
     isDragging: PropTypes.bool.isRequired,
-  }
+  };
   render() {
     const { item, itemType, isDragging } = this.props;
 
@@ -51,14 +51,12 @@ class CustomDragLayer extends Component {
     return (
       <div style={layerStyles}>
         <div style={getItemStyles(this.props)}>
-          { itemType === 'CARD' ?
-            <Card card={item.card} isDragging />
-          : null }
-          { itemType === 'MINION' ?
+          {itemType === 'CARD' ? <Card card={item.card} isDragging /> : null}
+          {itemType === 'MINION' ? (
             <div style={{ width: '76.19px', height: '80.63px' }}>
               <Minion card={item.card} isDragging />
             </div>
-          : null }
+          ) : null}
         </div>
       </div>
     );

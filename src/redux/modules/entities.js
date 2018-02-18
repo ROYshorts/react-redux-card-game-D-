@@ -7,9 +7,9 @@ function minions(state = new Map(), action) {
     case PLAY_CARD:
       return state.set(action.card.id, action.card);
     case HIT_MINION:
-      return state.update(action.minionId, minion => (
+      return state.update(action.minionId, minion =>
         minion.update('defense', defense => defense - action.damage)
-      ));
+      );
     default:
       return state;
   }

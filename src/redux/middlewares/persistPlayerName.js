@@ -1,4 +1,4 @@
-const persistPlayerName = store => next => (action) => {
+const persistPlayerName = store => next => action => {
   const previousPlayerName = store.getState().player.name;
 
   // Call the action

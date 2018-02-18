@@ -3,13 +3,10 @@ import { withRouter } from 'react-router';
 import { compose, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import {
-  updateHasOpponent,
-  joinGame,
-  fetchNewGame,
-} from 'redux/modules/currentGame';
+import { updateHasOpponent, joinGame, fetchNewGame } from 'redux/modules/currentGame';
 
-const imageUrl = 'http://chimplyimage.appspot.com/images/samples/classic-spinner/animatedCircle.gif';
+const imageUrl =
+  'http://chimplyimage.appspot.com/images/samples/classic-spinner/animatedCircle.gif';
 
 function emitGameJoin(socket, gameId) {
   socket.emit('gameJoin', { gameId });
@@ -33,7 +30,7 @@ export class GameNewScreen extends Component {
       emit: PropTypes.func.isRequired,
       on: PropTypes.func.isRequired,
     }).isRequired,
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -47,7 +44,7 @@ export class GameNewScreen extends Component {
   componentDidMount() {
     const { socket } = this.props;
 
-    this.props.fetchNewGame(true).then((gameId) => {
+    this.props.fetchNewGame(true).then(gameId => {
       emitGameJoin(socket, gameId);
     });
   }
@@ -103,21 +100,27 @@ export class GameNewScreen extends Component {
 
     return (
       <div>
-        <p>Loading: { loading ? <img src={imageUrl} style={{ width: '16px', height: '16px' }} alt="Loading..." /> : 'no' }</p>
-        <p>found opponent? { hasOpponent ? 'yes' : 'no' }</p>
-        { gameId ? (
+        <p>
+          Loading:{' '}
+          {loading ? (
+            <img src={imageUrl} style={{ width: '16px', height: '16px' }} alt="Loading..." />
+          ) : (
+            'no'
+          )}
+        </p>
+        <p>found opponent? {hasOpponent ? 'yes' : 'no'}</p>
+        {gameId ? (
           <div style={{ margin: 20 }}>
             <p>Hey dude, send this link to your friend 😁</p>
             <div style={{ backgroundColor: 'lightgray', padding: 20 }}>
-              { loading ?
-                'regenerating...' :
-                `${protocol}//${host}/${createHref(`/game/${gameId}/lobby`)}`
-              }
+              {loading
+                ? 'regenerating...'
+                : `${protocol}//${host}/${createHref(`/game/${gameId}/lobby`)}`}
             </div>
             <button onClick={this.fetchNewGame}>Regenerate URL</button>
             <button onClick={this.openAlert}>Join specific game</button>
           </div>
-        ) : null }
+        ) : null}
       </div>
     );
   }
@@ -135,7 +138,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  withRouter,
-)(GameNewScreen);
+export default compose(connect(mapStateToProps, mapDispatchToProps), withRouter)(GameNewScreen);

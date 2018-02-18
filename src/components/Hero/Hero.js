@@ -7,11 +7,7 @@ const styles = {
   borderRadius: '5px',
 };
 
-const Hero = ({ health }) => (
-  <div style={styles}>
-    { health }
-  </div>
-);
+const Hero = ({ health }) => <div style={styles}>{health}</div>;
 
 Hero.propTypes = {
   health: PropTypes.number.isRequired,
